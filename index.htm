@@ -1,0 +1,30 @@
+<div class="element">
+<div id="crcl" class="element">Move Kirby</div>
+  
+</div>
+
+<style type="text/css">
+  .element{
+  background: pink;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  vertical-align: middle;
+  color:#black;
+  line-height:8px;
+  font-size:8px;
+  font-family:Arial;
+  font-weight:bold;
+}
+</style>
+
+<script type="text/javascript">
+  window.addEventListener("mousemove", function(event){
+  console.log(event.clientX);
+ document.getElementsByClassName("element")[0].style.top = event.clientY + "px";  document.getElementsByClassName("element")[0].style.left = event.clientX + "px";
+});
+</script>
