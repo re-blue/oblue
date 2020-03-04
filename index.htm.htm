@@ -1,0 +1,78 @@
+﻿<div id="container">
+    <div class="blurPic"></div>
+    <img src="https://tinyurl.com/tdvwpfd"/>
+  <form action="/action_page.php">
+  <input type="text" id="fname" name="fname" size="40" class="form-text"/> 
+      <input type="submit" value="Google Search" class="search"/> <input type="submit" value="I'm Feeling Lucky" class="iflucky"/>
+ <br>
+ <br> 
+</form>
+</div>
+
+<style 
+#container{
+    position:relative;
+    margin-left: 200px;
+}
+.blurPic{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:0px;
+    height:0px;
+    box-shadow:0px 0px 0px 180px white inset; 
+    -moz-box-shadow:0px 0px 0px 180px white inset; 
+    -webkit-box-shadow:0px 0px 0px 180px white inset; 
+    -ms-box-shadow:0px 0px 0px 180px white inset; 
+    opacity:0.9;
+}
+
+input.form-text {
+  width: 400px;
+  height: 30px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+}
+input.search {
+  width: 105px;
+  height: 30px;
+  position: absolute;
+  top: 60%;
+  left: 330px;
+}
+
+input.iflucky {
+  width: 120px;
+  height: 30px;
+  position: absolute;
+  top: 60%;
+  left: 460px;
+}
+</style>
+
+<script
+var hgt = $('.blurPic').width($('#container img').width());
+$('.blurPic').height($('#container img').height());
+var result = $('.blurPic').css('boxShadow').match(/(-?\d+px)|(rgb\(.+\))/g)
+var color = result[0],
+    y = result[1],
+    x = result[2],
+    blur = result[3];
+var blurStartW = hgt.width()/2;
+var blurStartH = hgt.height()/2;
+$('.blurPic').mousemove(function(event){
+    event.preventDefault();
+    var scrollLeftPos = $(window).scrollLeft(),
+    scrollTopPos = $(window).scrollTop(),
+    offsetLft = hgt.offset().left,
+    offsetTp = hgt.offset().top;
+    var upX=event.clientX;
+    var upY=event.clientY;
+    $(this).css({boxShadow : ''+(-offsetLft+upX-blurStartW+scrollLeftPos)+'px '+(-offsetTp+upY-blurStartH+scrollTopPos)+'px 20px 100px white inset'});
+});
+$('.blurPic').mouseout(function(){
+    $(this).css({boxShadow : '0px 0px 0px 160px white inset'});
+});
+</script>
